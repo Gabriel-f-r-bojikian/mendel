@@ -1,0 +1,25 @@
+version: '2'
+services:
+  server:
+    # tty: true # docker run -t
+    # stdin_open: true # docker run -i
+    build: ./servers/
+    environment:
+      - ZMQ_PUB_IPV4=*
+      - ZMQ_PUB_PORT=5555
+    command:
+      [
+        "python",
+        "-u",
+        "broadcast_generated_power_line_data.py"
+      ]
+  client:
+    # tty: true # docker run -t
+    # stdin_open: true # docker run -i
+    build: ./
+    depends_on:
+      - server
+    environment:
+      - ZMQ_SUBS_IPV4=server
+      - ZMQ_SUBS_PORT=5555
+    command: [ "python", "-u", "src/main.py" ]

@@ -1,0 +1,7 @@
+# Queues
+zmq
+# Pydantic
+pydantic
+pydantic[dotenv]
+## Dependencies
+python-dotenv

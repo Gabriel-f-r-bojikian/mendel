@@ -1,0 +1,10 @@
+# Queues
+zmq
+# FFT
+numpy
+# PostgreSQL / Red Panda
+# Pydantic
+pydantic
+pydantic[dotenv]
+## Dependencies
+python-dotenv

@@ -11,7 +11,8 @@ services:
       [
         "python",
         "-u",
-        "broadcast_generated_power_line_data.py"
+        "broadcast_generated_power_line_data.py",
+        "0.1"
       ]
   client:
     # tty: true # docker run -t
@@ -23,3 +24,5 @@ services:
       - ZMQ_SUBS_IPV4=server
       - ZMQ_SUBS_PORT=5555
     command: [ "python", "-u", "src/main.py" ]
+    volumes:
+      - "./output-data:/maxwell-data-processor/output-data"

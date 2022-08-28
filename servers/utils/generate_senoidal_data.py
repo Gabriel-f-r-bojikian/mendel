@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from time import sleep
 from typing import Iterator
 
@@ -29,8 +29,7 @@ def generate_senoidal_data(time_sleep: float) -> Iterator[ZeroMQMsg]:
     i_b = np.sin(omega * t - 2 * np.pi / 3)
     i_c = np.sin(omega * t + 2 * np.pi / 3)
 
-    start_date = datetime(2020, 1, 1)
-    timedelta_dt = timedelta(seconds=dt)
+    start_date = 1577836800.0
     dt_counter = start_date
     count = 0
     while True:
@@ -52,5 +51,5 @@ def generate_senoidal_data(time_sleep: float) -> Iterator[ZeroMQMsg]:
         print(f"[{datetime.now().strftime(FORMAT)}]Sending: {dt_counter}")
         yield zmq_message
         sleep(time_sleep)
-        dt_counter += timedelta_dt
+        dt_counter += dt
         count = count % n

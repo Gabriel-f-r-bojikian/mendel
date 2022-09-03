@@ -20,7 +20,7 @@ MSG_TYPES = {
 class ZMQClient:
     def __init__(
         self,
-        ipv4: str = os.environ["ZMQ_SUBS_IPV4"],  # "127.0.0.1",
+        ipv4: str = os.environ["ZMQ_SUBS_IPV4"],
         port: str = os.environ["ZMQ_SUBS_PORT"],
         callback: Optional[Callable] = None,
         args: tuple = (),
@@ -77,4 +77,3 @@ class ZMQClient:
         while True:
             publisher_msg = self.socket.recv_string()
             self._handle(publisher_msg)
-            # sleep(0.1)

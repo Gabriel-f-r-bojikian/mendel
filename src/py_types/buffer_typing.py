@@ -1,9 +1,8 @@
 from typing import List, NamedTuple
-from datetime import datetime
 
 
 class Buffer(NamedTuple):
-    dt: List[datetime]
+    dt: List[float]
     VA: List[float]
     VB: List[float]
     VC: List[float]

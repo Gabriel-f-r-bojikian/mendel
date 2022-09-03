@@ -2,7 +2,7 @@ import logging
 
 from configs import LOG_CONFIGS
 from processes import zmq_process
-from services import FileBufferService
+from services import zmq_client_buffer_service
 
 logging.basicConfig(**LOG_CONFIGS)
 logger = logging.getLogger(__name__)
@@ -10,9 +10,7 @@ logger = logging.getLogger(__name__)
 
 def main():
     try:
-        file_buffer_service = FileBufferService()
-        zmq_process(file_buffer_service.writer)
-        
+        zmq_process(zmq_client_buffer_service)
     except Exception as e:
         logger.warning(str(e))
 

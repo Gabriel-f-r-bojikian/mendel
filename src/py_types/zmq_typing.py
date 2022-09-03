@@ -1,9 +1,7 @@
 from typing import TypedDict
-from datetime import datetime
-
 
 class ZeroMQMsgBody(TypedDict):
-    dt: datetime
+    dt: float
     VA: float
     VB: float
     VC: float

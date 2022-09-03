@@ -7,6 +7,7 @@ from pydantic import BaseSettings
 
 class Configs(BaseSettings):
     LOG_PATH: Optional[str]
+    ROOT_DIR: str = "/maxwell-data-processor/output-data"
 
     class Config:
         env_file = join(dirname(realpath(__file__)), ".env")

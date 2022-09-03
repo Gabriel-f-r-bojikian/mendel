@@ -45,6 +45,3 @@ def zmq_client_buffer_service(msg: ZeroMQMsg):
         IA_o = ZMQ_CLIENT_BUFFER.IA.pop(0)
         IB_o = ZMQ_CLIENT_BUFFER.IB.pop(0)
         IC_o = ZMQ_CLIENT_BUFFER.IC.pop(0)
-
-        with open(file_path, "ab") as new_file:
-            new_file.write(struct_pack("7d", dt_o,VA_o ,VB_o ,VC_o ,IA_o, IB_o, IC_o))

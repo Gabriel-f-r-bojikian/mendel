@@ -1,7 +1,8 @@
+from typing import Callable, Optional
+
 from infra.zmq import ZMQClient
-from services import zmq_client_buffer_service
 
 
-def zmq_process():
-    zmq_server = ZMQClient(callback=zmq_client_buffer_service)
+def zmq_process(callback: Optional[Callable] = None):
+    zmq_server = ZMQClient(callback=callback)
     zmq_server.run()

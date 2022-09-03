@@ -23,11 +23,11 @@ def generate_senoidal_data(time_sleep: float) -> Iterator[ZeroMQMsg]:
     v_a = (
         np.sin(omega * t) + 0.5 * np.sin(3.0 * omega * t) + 0.2 * np.sin(5 * omega * t)
     )
-    v_b = np.sin(omega * t - 2 * np.pi / 3)
-    v_c = np.sin(omega * t + 2 * np.pi / 3)
+    v_b = np.sin(omega * t - (2 * np.pi / 3))
+    v_c = np.sin(omega * t + (2 * np.pi / 3))
     i_a = np.sin(omega * t)
-    i_b = np.sin(omega * t - 2 * np.pi / 3)
-    i_c = np.sin(omega * t + 2 * np.pi / 3)
+    i_b = np.sin(omega * t - (2 * np.pi / 3))
+    i_c = np.sin(omega * t + (2 * np.pi / 3))
 
     start_date = 1577836800.0
     dt_counter = start_date
@@ -52,4 +52,5 @@ def generate_senoidal_data(time_sleep: float) -> Iterator[ZeroMQMsg]:
         yield zmq_message
         sleep(time_sleep)
         dt_counter += dt
+        count += 1
         count = count % n

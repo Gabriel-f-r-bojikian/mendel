@@ -33,9 +33,11 @@ class FileBufferService:
         va = msg["msg_body"]["VA"]
         vb = msg["msg_body"]["VB"]
         vc = msg["msg_body"]["VC"]
+        vN = msg["msg_body"]["VN"]
         ia = msg["msg_body"]["IA"]
         ib = msg["msg_body"]["IB"]
         ic = msg["msg_body"]["IC"]
+        iN = msg["msg_body"]["IN"]
         # self.__logger.info(
         #     "[%(current_timestamp)s] Receiving: %(faraday_timestamp)s",
         #     dict(
@@ -48,7 +50,7 @@ class FileBufferService:
             f" | Receiving: {datetime.utcfromtimestamp(dt).isoformat()}"
         )
         try:
-            self.file_buffer.write(struct_pack("7d", dt, va, vb, vc, ia, ib, ic))
+            self.file_buffer.write(struct_pack("9d", dt, va, vb, vc, vN, ia, ib, ic, iN))
         except Exception as e:
             raise Exception("Couldn't write on file, exiting service") from e
 

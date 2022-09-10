@@ -6,4 +6,6 @@ zmq
 pydantic
 pydantic[dotenv]
 ## Dependencies
+# logging
 python-dotenv
+pytz

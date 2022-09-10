@@ -5,9 +5,11 @@ class ZeroMQMsgBody(TypedDict):
     VA: float
     VB: float
     VC: float
+    VN: float
     IA: float
     IB: float
     IC: float
+    IN: float
     freq: float
 
 

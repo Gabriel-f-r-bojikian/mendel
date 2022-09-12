@@ -16,7 +16,8 @@ class FileBufferService:
     file_buffer: BufferedWriter
     # Private variables
     __dirname = configs.ROOT_DIR
-    __format: str = "%F_%H-%M-%S.%f_UTC%Z"
+    __time_format: str = "%F_%H-%M-%S.%f_UTC%Z"
+    __filename_format: str = "%F"
     __timezone = timezone('America/Sao_Paulo')
     __logger: logging.Logger = logging.getLogger(__file__)
     logging.basicConfig(level=logging.INFO)
@@ -40,8 +41,8 @@ class FileBufferService:
         self.__logger.info(
             "[%(current_timestamp)s] Receiving: %(faraday_timestamp)s",
             dict(
-                current_timestamp=datetime.now().astimezone(self.__timezone).strftime(self.__format),
-                faraday_timestamp=datetime.utcfromtimestamp(dt).strftime(self.__format),
+                current_timestamp=datetime.now().astimezone(self.__timezone).strftime(self.__time_format),
+                faraday_timestamp=datetime.utcfromtimestamp(dt).strftime(self.__time_format),
             ),
         )
         try:
@@ -57,7 +58,7 @@ class FileBufferService:
 
     def openNewFile(self):
         self.instantiation_datetime = datetime.now().astimezone(self.__timezone)
-        self.inst_datetime_string = self.instantiation_datetime.strftime(self.__format)
+        self.inst_datetime_string = self.instantiation_datetime.strftime(self.__filename_format)
 
         file_name = f"{str(self.inst_datetime_string)}.dat"
         self.file_path = os.path.join(self.__dirname, file_name)
